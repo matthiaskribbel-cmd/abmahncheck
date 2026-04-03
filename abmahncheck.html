@@ -1,0 +1,1219 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>abmahncheck.legal – Ihre Abmahnung. Unser Risiko.</title>
+<meta name="description" content="Abmahnung wegen einer Google-, Tripadvisor- oder Trustpilot-Bewertung erhalten? Kostenlose Erstprüfung mit sofortigem Feedback. Rundum-sorglos-Paket ab EUR 149 – wir übernehmen Aufwand und volles Prozessrisiko.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500&family=Fraunces:ital,wght@0,300;0,600;1,300&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --green: #22c55e;
+    --green-dark: #16a34a;
+    --green-light: #dcfce7;
+    --green-pale: #f0fdf4;
+    --ink: #0f1a12;
+    --ink-mid: #3d4f42;
+    --ink-light: #6b7c70;
+    --border: #d4e4d8;
+    --bg: #fafcfa;
+    --white: #ffffff;
+    --radius: 12px;
+    --radius-lg: 20px;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--bg);
+    color: var(--ink);
+    font-size: 16px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ── LOGO COMPONENT (leicht austauschbar) ── */
+  .logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+    flex-shrink: 0;
+  }
+  .logo-icon {
+    width: 36px;
+    height: 36px;
+  }
+  .logo-wordmark {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.1;
+  }
+  .logo-name {
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 500;
+    font-size: 18px;
+    color: var(--ink);
+    letter-spacing: -0.3px;
+  }
+  .logo-name span { color: var(--green); }
+  .logo-tld {
+    font-size: 10px;
+    color: var(--ink-light);
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(250, 252, 250, 0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+    padding: 0 24px;
+  }
+  .nav-inner {
+    max-width: 1080px;
+    margin: 0 auto;
+    height: 64px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+  }
+  .nav-links {
+    display: flex;
+    align-items: center;
+    gap: 32px;
+    list-style: none;
+  }
+  .nav-links a {
+    font-size: 14px;
+    font-weight: 400;
+    color: var(--ink-mid);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--green-dark); }
+  .nav-cta {
+    background: var(--green);
+    color: var(--white) !important;
+    padding: 8px 18px;
+    border-radius: 8px;
+    font-weight: 500 !important;
+    font-size: 14px !important;
+    transition: background 0.2s !important;
+  }
+  .nav-cta:hover { background: var(--green-dark) !important; }
+  .nav-mobile-toggle {
+    display: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 4px;
+  }
+
+  /* ── HERO ── */
+  .hero {
+    max-width: 1080px;
+    margin: 0 auto;
+    padding: 80px 24px 64px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 64px;
+    align-items: center;
+  }
+  .hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: var(--green-light);
+    color: var(--green-dark);
+    font-size: 12px;
+    font-weight: 500;
+    padding: 5px 12px;
+    border-radius: 100px;
+    margin-bottom: 20px;
+    letter-spacing: 0.3px;
+  }
+  .hero-badge-dot {
+    width: 6px;
+    height: 6px;
+    background: var(--green);
+    border-radius: 50%;
+  }
+  .hero h1 {
+    font-family: 'Fraunces', serif;
+    font-weight: 300;
+    font-size: clamp(36px, 5vw, 52px);
+    line-height: 1.15;
+    color: var(--ink);
+    margin-bottom: 20px;
+    letter-spacing: -0.5px;
+  }
+  .hero h1 em {
+    font-style: italic;
+    color: var(--green-dark);
+  }
+  .hero-sub {
+    font-size: 17px;
+    color: var(--ink-mid);
+    line-height: 1.7;
+    margin-bottom: 32px;
+    max-width: 440px;
+  }
+  .hero-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  .btn-primary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    background: var(--green);
+    color: var(--white);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 16px;
+    font-weight: 500;
+    padding: 14px 28px;
+    border-radius: var(--radius);
+    border: none;
+    cursor: pointer;
+    text-decoration: none;
+    transition: background 0.2s, transform 0.15s;
+    width: fit-content;
+  }
+  .btn-primary:hover {
+    background: var(--green-dark);
+    transform: translateY(-1px);
+  }
+  .hero-note {
+    font-size: 13px;
+    color: var(--ink-light);
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .hero-note svg { flex-shrink: 0; }
+
+  /* Trust signals */
+  .trust-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    margin-top: 40px;
+  }
+  .trust-item {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    font-size: 13px;
+    color: var(--ink-mid);
+  }
+  .trust-icon {
+    width: 18px;
+    height: 18px;
+    background: var(--green-light);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  /* Hero right: illustration card */
+  .hero-card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: 32px;
+    box-shadow: 0 4px 24px rgba(15, 26, 18, 0.06);
+    animation: cardFloat 4s ease-in-out infinite;
+  }
+  @keyframes cardFloat {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-6px); }
+  }
+  .hero-card-label {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--ink-light);
+    margin-bottom: 16px;
+  }
+  .hero-card-steps {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+  .hero-card-step {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+  }
+  .step-num {
+    width: 28px;
+    height: 28px;
+    background: var(--green-pale);
+    border: 1.5px solid var(--green-light);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--green-dark);
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+  .step-content strong {
+    display: block;
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--ink);
+    margin-bottom: 2px;
+  }
+  .step-content span {
+    font-size: 13px;
+    color: var(--ink-light);
+  }
+  .hero-card-divider {
+    height: 1px;
+    background: var(--border);
+    margin: 8px 0;
+  }
+  .hero-card-result {
+    background: var(--green-pale);
+    border: 1px solid var(--green-light);
+    border-radius: 10px;
+    padding: 14px 16px;
+    margin-top: 8px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .result-icon {
+    width: 32px;
+    height: 32px;
+    background: var(--green);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+  .result-text strong {
+    display: block;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--ink);
+  }
+  .result-text span {
+    font-size: 12px;
+    color: var(--ink-light);
+  }
+
+  /* ── SECTION SHARED ── */
+  section { padding: 80px 24px; }
+  .section-inner { max-width: 1080px; margin: 0 auto; }
+  .section-label {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--green-dark);
+    margin-bottom: 12px;
+  }
+  .section-title {
+    font-family: 'Fraunces', serif;
+    font-weight: 300;
+    font-size: clamp(28px, 4vw, 40px);
+    color: var(--ink);
+    line-height: 1.2;
+    margin-bottom: 16px;
+    letter-spacing: -0.3px;
+  }
+  .section-sub {
+    font-size: 16px;
+    color: var(--ink-mid);
+    max-width: 560px;
+    line-height: 1.7;
+    margin-bottom: 48px;
+  }
+
+  /* ── UPLOAD SECTION ── */
+  .upload-section {
+    background: var(--white);
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+  }
+  .upload-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 64px;
+    align-items: start;
+  }
+  .upload-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  .form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+  .form-label {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--ink-mid);
+  }
+  .form-label span {
+    color: var(--ink-light);
+    font-weight: 400;
+  }
+  textarea, input[type="email"], input[type="text"] {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 15px;
+    color: var(--ink);
+    background: var(--bg);
+    border: 1.5px solid var(--border);
+    border-radius: var(--radius);
+    padding: 12px 16px;
+    transition: border-color 0.2s, box-shadow 0.2s;
+    resize: vertical;
+    width: 100%;
+  }
+  textarea:focus, input:focus {
+    outline: none;
+    border-color: var(--green);
+    box-shadow: 0 0 0 3px rgba(34, 197, 94, 0.12);
+  }
+  .upload-zone {
+    border: 2px dashed var(--border);
+    border-radius: var(--radius);
+    padding: 28px;
+    text-align: center;
+    cursor: pointer;
+    transition: border-color 0.2s, background 0.2s;
+    background: var(--bg);
+  }
+  .upload-zone:hover {
+    border-color: var(--green);
+    background: var(--green-pale);
+  }
+  .upload-zone-icon {
+    width: 40px;
+    height: 40px;
+    background: var(--green-light);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 10px;
+  }
+  .upload-zone p {
+    font-size: 14px;
+    color: var(--ink-mid);
+  }
+  .upload-zone small {
+    font-size: 12px;
+    color: var(--ink-light);
+    margin-top: 4px;
+    display: block;
+  }
+  .form-privacy {
+    font-size: 12px;
+    color: var(--ink-light);
+    line-height: 1.6;
+    display: flex;
+    gap: 8px;
+    align-items: flex-start;
+  }
+  .form-privacy input { width: auto; margin-top: 3px; }
+
+  .upload-info {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    padding-top: 8px;
+  }
+  .info-card {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 20px;
+  }
+  .info-card-title {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--ink);
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .info-card p {
+    font-size: 13px;
+    color: var(--ink-mid);
+    line-height: 1.6;
+  }
+
+  /* ── ERGEBNIS-KARTEN ── */
+  .result-section { background: var(--bg); }
+  .result-cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+  .result-card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: 28px;
+    position: relative;
+    overflow: hidden;
+  }
+  .result-card.featured {
+    border-color: var(--green);
+    box-shadow: 0 0 0 1px var(--green);
+  }
+  .result-card-tag {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    padding: 4px 10px;
+    border-radius: 100px;
+    margin-bottom: 16px;
+  }
+  .tag-a { background: var(--green-light); color: var(--green-dark); }
+  .tag-b { background: #fef9c3; color: #854d0e; }
+  .tag-c { background: #f1f5f9; color: #475569; }
+  .result-card h3 {
+    font-family: 'Fraunces', serif;
+    font-weight: 300;
+    font-size: 22px;
+    color: var(--ink);
+    margin-bottom: 10px;
+    line-height: 1.25;
+  }
+  .result-card p {
+    font-size: 14px;
+    color: var(--ink-mid);
+    line-height: 1.6;
+    margin-bottom: 20px;
+  }
+  .result-card-price {
+    font-size: 28px;
+    font-weight: 300;
+    font-family: 'Fraunces', serif;
+    color: var(--ink);
+    margin-bottom: 4px;
+  }
+  .result-card-price small {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13px;
+    color: var(--ink-light);
+    font-weight: 400;
+  }
+
+  /* ── HOW IT WORKS ── */
+  .how-section {
+    background: var(--ink);
+    color: var(--white);
+  }
+  .how-section .section-title { color: var(--white); }
+  .how-section .section-label { color: var(--green); }
+  .how-section .section-sub { color: rgba(255,255,255,0.6); }
+  .how-steps {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2px;
+    background: rgba(255,255,255,0.08);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+  }
+  .how-step {
+    background: var(--ink);
+    padding: 36px 28px;
+    transition: background 0.2s;
+  }
+  .how-step:hover { background: rgba(255,255,255,0.04); }
+  .how-step-num {
+    font-family: 'Fraunces', serif;
+    font-weight: 300;
+    font-size: 48px;
+    color: var(--green);
+    line-height: 1;
+    margin-bottom: 16px;
+    opacity: 0.8;
+  }
+  .how-step h3 {
+    font-size: 16px;
+    font-weight: 500;
+    color: var(--white);
+    margin-bottom: 10px;
+  }
+  .how-step p {
+    font-size: 14px;
+    color: rgba(255,255,255,0.55);
+    line-height: 1.65;
+  }
+
+  /* ── FAQ ── */
+  .faq-section { background: var(--white); border-top: 1px solid var(--border); }
+  .faq-grid {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 80px;
+    align-items: start;
+  }
+  .faq-sticky {
+    position: sticky;
+    top: 88px;
+  }
+  .faq-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+  .faq-item {
+    border-bottom: 1px solid var(--border);
+  }
+  .faq-question {
+    width: 100%;
+    background: none;
+    border: none;
+    padding: 20px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+    cursor: pointer;
+    text-align: left;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 15px;
+    font-weight: 500;
+    color: var(--ink);
+    transition: color 0.2s;
+  }
+  .faq-question:hover { color: var(--green-dark); }
+  .faq-icon {
+    width: 20px;
+    height: 20px;
+    flex-shrink: 0;
+    transition: transform 0.25s;
+    color: var(--ink-light);
+  }
+  .faq-item.open .faq-icon { transform: rotate(45deg); color: var(--green); }
+  .faq-answer {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.35s ease;
+  }
+  .faq-answer-inner {
+    padding-bottom: 20px;
+    font-size: 14px;
+    color: var(--ink-mid);
+    line-height: 1.75;
+  }
+
+  /* ── TRUST / FOOTER ── */
+  .trust-section {
+    background: var(--green-pale);
+    border-top: 1px solid var(--green-light);
+    text-align: center;
+    padding: 64px 24px;
+  }
+  .trust-section .section-title { margin: 0 auto 16px; }
+  .trust-section .section-sub { margin: 0 auto 40px; text-align: center; }
+  .trust-badges {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 16px;
+    margin-top: 24px;
+  }
+  .trust-badge {
+    background: var(--white);
+    border: 1px solid var(--green-light);
+    border-radius: 10px;
+    padding: 14px 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--ink-mid);
+  }
+
+  footer {
+    background: var(--ink);
+    padding: 32px 24px;
+    color: rgba(255,255,255,0.4);
+    font-size: 13px;
+  }
+  .footer-inner {
+    max-width: 1080px;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+  }
+  .footer-links {
+    display: flex;
+    gap: 24px;
+    list-style: none;
+  }
+  .footer-links a {
+    color: rgba(255,255,255,0.4);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .footer-links a:hover { color: rgba(255,255,255,0.8); }
+
+  /* ── MOBILE ── */
+  @media (max-width: 768px) {
+    .nav-links { display: none; }
+    .nav-mobile-toggle { display: block; }
+    .hero {
+      grid-template-columns: 1fr;
+      padding: 48px 24px 40px;
+      gap: 40px;
+    }
+    .hero-card { display: none; }
+    .upload-grid { grid-template-columns: 1fr; gap: 40px; }
+    .result-cards { grid-template-columns: 1fr; }
+    .how-steps { grid-template-columns: 1fr; }
+    .faq-grid { grid-template-columns: 1fr; gap: 40px; }
+    .faq-sticky { position: static; }
+    section { padding: 56px 24px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ── NAVIGATION ── -->
+<nav>
+  <div class="nav-inner">
+    <!-- LOGO COMPONENT: Ersetze diesen Block um das Logo zu ändern -->
+    <a href="#" class="logo">
+      <svg class="logo-icon" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M18 3L31 8.5V20C31 27 24.5 32.5 18 35C11.5 32.5 5 27 5 20V8.5L18 3Z" fill="#22c55e"/>
+        <path d="M11 19Q18 15 25 19" stroke="white" stroke-width="2" stroke-linecap="round" fill="none"/>
+        <path d="M9 24Q18 19 27 24" stroke="white" stroke-width="2" stroke-linecap="round" fill="none"/>
+        <path d="M12 14Q18 11 24 14" stroke="white" stroke-width="1.5" stroke-linecap="round" fill="none" opacity="0.7"/>
+      </svg>
+      <div class="logo-wordmark">
+        <span class="logo-name">abmahn<span>check</span></span>
+        <span class="logo-tld">.legal</span>
+      </div>
+    </a>
+    <!-- ENDE LOGO COMPONENT -->
+
+    <ul class="nav-links">
+      <li><a href="#wie-es-funktioniert">Wie es funktioniert</a></li>
+      <li><a href="#faq">FAQ</a></li>
+      <li><a href="#pruefung" class="nav-cta">Kostenlos prüfen</a></li>
+    </ul>
+    <button class="nav-mobile-toggle" onclick="toggleMobileNav()" aria-label="Menü">
+      <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
+        <path d="M3 6h16M3 11h16M3 16h16" stroke="#3d4f42" stroke-width="1.8" stroke-linecap="round"/>
+      </svg>
+    </button>
+  </div>
+</nav>
+
+<!-- ── HERO ── -->
+<section style="padding: 0; background: var(--bg);">
+  <div class="hero">
+    <div class="hero-left">
+      <div class="hero-badge">
+        <span class="hero-badge-dot"></span>
+        Kostenlose Erstprüfung · Google, Tripadvisor, Trustpilot & mehr
+      </div>
+      <h1>Abgemahnt wegen einer <em>Online-Bewertung?</em></h1>
+      <p class="hero-sub">Abgemahnt wegen einer Bewertung auf Google, Tripadvisor, Trustpilot oder einer anderen Plattform? Wir prüfen kostenlos ob die Abmahnung missbräuchlich ist und geben Ihnen eine klare Einschätzung. Wenn Sie möchten, übernehmen wir für EUR 149 den gesamten weiteren Aufwand und das volle Prozessrisiko.</p>
+      <div class="hero-actions">
+        <a href="#pruefung" class="btn-primary">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+            <path d="M8 1.5L14.5 8L8 14.5M1.5 8h13" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          Jetzt kostenlos prüfen
+        </a>
+        <p class="hero-note">
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+            <circle cx="7" cy="7" r="6" stroke="#22c55e" stroke-width="1.5"/>
+            <path d="M4.5 7l2 2 3-3" stroke="#22c55e" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          Keine Kreditkarte erforderlich. Kostenlos und unverbindlich.
+        </p>
+      </div>
+      <div class="trust-row">
+        <div class="trust-item">
+          <div class="trust-icon">
+            <svg width="10" height="10" viewBox="0 0 10 10" fill="none">
+              <path d="M2 5l2.5 2.5 3.5-4" stroke="#22c55e" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          Unabhängiger Prozessfinanzierer
+        </div>
+        <div class="trust-item">
+          <div class="trust-icon">
+            <svg width="10" height="10" viewBox="0 0 10 10" fill="none">
+              <path d="M2 5l2.5 2.5 3.5-4" stroke="#22c55e" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          Sofortige Ersteinschätzung
+        </div>
+        <div class="trust-item">
+          <div class="trust-icon">
+            <svg width="10" height="10" viewBox="0 0 10 10" fill="none">
+              <path d="M2 5l2.5 2.5 3.5-4" stroke="#22c55e" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          Kein Risiko für Sie
+        </div>
+      </div>
+    </div>
+
+    <div class="hero-card">
+      <div class="hero-card-label">Ihr Weg in 3 Schritten</div>
+      <div class="hero-card-steps">
+        <div class="hero-card-step">
+          <div class="step-num">1</div>
+          <div class="step-content">
+            <strong>Unterlagen einreichen</strong>
+            <span>Bewertungstext und Abmahnschreiben hochladen</span>
+          </div>
+        </div>
+        <div class="hero-card-step">
+          <div class="step-num">2</div>
+          <div class="step-content">
+            <strong>Kostenlose Prüfung</strong>
+            <span>Wir analysieren den Fall und melden uns innert 24 Stunden</span>
+          </div>
+        </div>
+        <div class="hero-card-step">
+          <div class="step-num">3</div>
+          <div class="step-content">
+            <strong>Ergebnis erhalten</strong>
+            <span>Klare Einschätzung – und wenn möglich, übernehmen wir alles weitere</span>
+          </div>
+        </div>
+      </div>
+      <div class="hero-card-divider"></div>
+      <div class="hero-card-result">
+        <div class="result-icon">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+            <path d="M3.5 8l3 3 6-6" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <div class="result-text">
+          <strong>Erstprüfung kostenlos</strong>
+          <span>Rundum-sorglos-Paket ab EUR 149.</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── UPLOAD / FORMULAR ── -->
+<section id="pruefung" class="upload-section">
+  <div class="section-inner">
+    <div class="upload-grid">
+      <div>
+        <div class="section-label">Kostenlose Prüfung</div>
+        <h2 class="section-title">Fall jetzt einreichen</h2>
+        <p class="section-sub">Laden Sie Ihre Unterlagen hoch. Sie erhalten sofort eine automatisierte Ersteinschätzung. Bei vielversprechenden Fällen meldet sich ein Spezialist innerhalb von 24 Stunden mit einer detaillierten Bewertung.</p>
+        <div class="upload-form">
+          <div class="form-group">
+            <label class="form-label">Ihre Bewertung <span>(der Text den Sie geschrieben haben)</span></label>
+            <textarea rows="4" placeholder="Kopieren Sie hier den genauen Wortlaut Ihrer Bewertung..."></textarea>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Abmahnschreiben <span>(PDF oder Foto)</span></label>
+            <div class="upload-zone" onclick="document.getElementById('fileInput').click()">
+              <div class="upload-zone-icon">
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                  <path d="M10 3v10M6 7l4-4 4 4" stroke="#22c55e" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+                  <path d="M3 14v1.5A1.5 1.5 0 004.5 17h11a1.5 1.5 0 001.5-1.5V14" stroke="#6b7c70" stroke-width="1.5" stroke-linecap="round"/>
+                </svg>
+              </div>
+              <p>Datei hierher ziehen oder klicken</p>
+              <small>PDF, JPG, PNG – max. 10 MB</small>
+              <input type="file" id="fileInput" accept=".pdf,.jpg,.jpeg,.png" style="display:none">
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Weitere Kommunikation <span>(optional)</span></label>
+            <div class="upload-zone" onclick="document.getElementById('fileInput2').click()" style="padding: 16px 28px;">
+              <div class="upload-zone-icon">
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                  <path d="M10 3v10M6 7l4-4 4 4" stroke="#6b7c70" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+                  <path d="M3 14v1.5A1.5 1.5 0 004.5 17h11a1.5 1.5 0 001.5-1.5V14" stroke="#6b7c70" stroke-width="1.5" stroke-linecap="round"/>
+                </svg>
+              </div>
+              <p style="color: var(--ink-mid);">Antworten auf Ihre Bewertung, weitere Nachrichten</p>
+              <small>z.B. Reaktion des Unternehmers auf der Plattform, E-Mails, Screenshots – max. 10 MB</small>
+              <input type="file" id="fileInput2" accept=".pdf,.jpg,.jpeg,.png" style="display:none">
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Ihre E-Mail-Adresse</label>
+            <input type="email" placeholder="name@beispiel.de">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Ihr Name <span>(optional)</span></label>
+            <input type="text" placeholder="Vor- und Nachname">
+          </div>
+          <label class="form-privacy">
+            <input type="checkbox">
+            Ich habe die <a href="#" onclick="document.getElementById('agb-modal').style.display='block'; return false;" style="color: var(--green-dark);">AGB</a> und die <a href="#datenschutz" style="color: var(--green-dark);">Datenschutzerklärung</a> gelesen, stimme der Verarbeitung meiner Daten zu und trete meinen etwaigen Gegenanspruch wegen missbräuchlicher Abmahnung an abmahncheck.legal ab.
+          </label>
+          <button class="btn-primary" style="width: 100%; justify-content: center;">
+            Fall kostenlos einreichen
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+              <path d="M3 8h10M9 4l4 4-4 4" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </button>
+        </div>
+      </div>
+      <div class="upload-info">
+        <div class="info-card">
+          <div class="info-card-title">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+              <circle cx="8" cy="8" r="7" stroke="#22c55e" stroke-width="1.5"/>
+              <path d="M8 7v5M8 5v.5" stroke="#22c55e" stroke-width="1.8" stroke-linecap="round"/>
+            </svg>
+            Was passiert nach dem Einreichen?
+          </div>
+          <p>Sie erhalten sofort eine automatisierte Ersteinschätzung Ihres Falls. Sieht es vielversprechend aus, meldet sich zusätzlich ein Spezialist innerhalb von 24 Stunden mit einer detaillierten Bewertung und einem konkreten Angebot.</p>
+        </div>
+        <div class="info-card">
+          <div class="info-card-title">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+              <rect x="2" y="3" width="12" height="10" rx="2" stroke="#22c55e" stroke-width="1.5"/>
+              <path d="M5 7h6M5 10h4" stroke="#22c55e" stroke-width="1.5" stroke-linecap="round"/>
+            </svg>
+            Was benötigen wir?
+          </div>
+          <p>Den genauen Wortlaut Ihrer Bewertung sowie das vollständige Abmahnschreiben der Kanzlei. Je vollständiger die Unterlagen, desto präziser unsere Einschätzung.</p>
+        </div>
+        <div class="info-card">
+          <div class="info-card-title">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+              <path d="M5 8C5 6.34 6.34 5 8 5s3 1.34 3 3-1.34 3-3 3-3-1.34-3-3z" stroke="#22c55e" stroke-width="1.5"/>
+              <path d="M2 8h1M13 8h1M8 2v1M8 13v1" stroke="#22c55e" stroke-width="1.5" stroke-linecap="round"/>
+            </svg>
+            Ihre Daten sind sicher
+          </div>
+          <p>Alle Daten werden verschlüsselt übertragen und ausschliesslich zur Fallprüfung verwendet. Wir geben keine Daten ohne Ihre Einwilligung weiter. Serverstandort Schweiz.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── WIE ES FUNKTIONIERT ── -->
+<section id="wie-es-funktioniert" class="how-section">
+  <div class="section-inner">
+    <div class="section-label">Transparenz</div>
+    <h2 class="section-title">So arbeiten wir</h2>
+    <p class="section-sub">Kein Kleingedrucktes. Kein verstecktes Risiko. Hier ist genau was passiert wenn Sie Ihren Fall einreichen.</p>
+    <div class="how-steps">
+      <div class="how-step">
+        <div class="how-step-num">01</div>
+        <h3>Kostenlose Erstprüfung</h3>
+        <p>Wir prüfen Ihren Fall vollständig und kostenlos. Ob Ihre Abmahnung haltbar ist oder nicht – Sie erfahren es ohne jede Vorabkosten.</p>
+      </div>
+      <div class="how-step">
+        <div class="how-step-num">02</div>
+        <h3>Sofortige Ersteinschätzung</h3>
+        <p>Sie erhalten unmittelbar eine automatisierte Einschätzung Ihres Falls. Sieht es gut aus, meldet sich ein Spezialist innerhalb von 24 Stunden mit Details und einem konkreten Angebot.</p>
+      </div>
+      <div class="how-step">
+        <div class="how-step-num">03</div>
+        <h3>Wir übernehmen Aufwand und Risiko</h3>
+        <p>Für EUR 149 übernehmen wir als Prozessfinanzierer alles weitere – inklusive des vollen Kostenrisikos falls es zu einem Verfahren kommt. Sie zahlen einmal und sind raus.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── ERGEBNISOPTIONEN ── -->
+<section class="result-section">
+  <div class="section-inner">
+    <div class="section-label">Ihre Optionen</div>
+    <h2 class="section-title">Was wir Ihnen anbieten können</h2>
+    <p class="section-sub">Je nach Einschätzung Ihres Falls gibt es drei mögliche Ergebnisse. Die Erstprüfung ist immer kostenlos – was danach passiert, entscheiden Sie.</p>
+    <div class="result-cards" style="grid-template-columns: 1fr 1fr;">
+      <div class="result-card featured">
+        <div class="result-card-tag tag-a">Vielversprechender Fall</div>
+        <h3>Rundum-sorglos-Paket</h3>
+        <p>Wir übernehmen als Prozessfinanzierer den gesamten weiteren Aufwand – von der Kommunikation mit der abmahnenden Kanzlei bis hin zum vollen Kostenrisiko bei einem möglichen Verfahren.</p>
+        <div class="result-card-price">EUR 149 <small>Pauschale, alles inklusive</small></div>
+        <p style="font-size: 12px; color: var(--ink-light); margin-top: 6px;">Keine weiteren Kosten. Keine Überraschungen. Sie zahlen einmal und sind raus.</p>
+      </div>
+      <div class="result-card">
+        <div class="result-card-tag tag-c">Ausserhalb unseres Bereichs</div>
+        <h3>Weiterleitung zum Spezialisten</h3>
+        <p>Nicht jeder Fall eignet sich für unser Modell. Auf Wunsch leiten wir Ihre Unterlagen direkt an einen spezialisierten Anwalt weiter – kostenlos und unverbindlich.</p>
+        <div class="result-card-price">Kostenlos <small>Weiterleitung</small></div>
+        <p style="font-size: 12px; color: var(--ink-light); margin-top: 6px;">Wir helfen Ihnen trotzdem weiter – auch wenn wir selbst nicht tätig werden können.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── FAQ ── -->
+<section id="faq" class="faq-section">
+  <div class="section-inner">
+    <div class="faq-grid">
+      <div class="faq-sticky">
+        <div class="section-label">Häufige Fragen</div>
+        <h2 class="section-title">Alles was Sie wissen müssen</h2>
+        <p style="font-size: 15px; color: var(--ink-mid); line-height: 1.7; margin-top: 16px;">Abmahnungen wegen Online-Bewertungen sind ein weit verbreitetes Problem. Hier finden Sie die wichtigsten rechtlichen Hintergründe.</p>
+      </div>
+      <div class="faq-list">
+        <div class="faq-item">
+          <button class="faq-question" onclick="toggleFaq(this)">
+            Wann ist eine Abmahnung wegen einer Bewertung missbräuchlich?
+            <svg class="faq-icon" viewBox="0 0 20 20" fill="none"><path d="M10 4v12M4 10h12" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+          </button>
+          <div class="faq-answer">
+            <div class="faq-answer-inner">Eine Abmahnung ist missbräuchlich wenn sie nicht dem Schutz eines legitimen rechtlichen Interesses dient, sondern primär dazu, Gebühren zu generieren oder den Abgemahnten einzuschüchtern. Typische Merkmale: Die Kanzlei mahnt systematisch viele Personen wegen ähnlicher Bewertungen ab, die geforderten Beträge stehen in keinem Verhältnis zum behaupteten Schaden, oder die beanstandete Aussage ist eine zulässige Meinungsäusserung und keine unwahre Tatsachenbehauptung.</div>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question" onclick="toggleFaq(this)">
+            Was ist der Unterschied zwischen Meinungsäusserung und Tatsachenbehauptung?
+            <svg class="faq-icon" viewBox="0 0 20 20" fill="none"><path d="M10 4v12M4 10h12" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+          </button>
+          <div class="faq-answer">
+            <div class="faq-answer-inner">Meinungsäusserungen wie "Der Service war schlecht" oder "Ich war enttäuscht" sind grundsätzlich durch die Meinungsfreiheit geschützt und können nicht untersagt werden. Tatsachenbehauptungen hingegen, also konkrete überprüfbare Aussagen wie "Das Restaurant hat mich bestohlen", können abgemahnt werden wenn sie unwahr sind. Die Grenze ist oft fliessend und im Einzelfall zu beurteilen.</div>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question" onclick="toggleFaq(this)">
+            Sollte ich die Unterlassungserklärung unterschreiben?
+            <svg class="faq-icon" viewBox="0 0 20 20" fill="none"><path d="M10 4v12M4 10h12" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+          </button>
+          <div class="faq-answer">
+            <div class="faq-answer-inner">In den meisten Fällen: nein, zumindest nicht ohne juristische Prüfung. Mit einer Unterlassungserklärung verpflichten Sie sich, die Bewertung dauerhaft zu löschen und bei erneutem Verstoss eine Vertragsstrafe zu zahlen. Diese Strafe kann erheblich sein. Ausserdem erkennen Sie damit implizit an, dass Ihre Bewertung rechtswidrig war. Lassen Sie die Erklärung immer prüfen bevor Sie unterschreiben.</div>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question" onclick="toggleFaq(this)">
+            Was passiert wenn ich gar nicht reagiere?
+            <svg class="faq-icon" viewBox="0 0 20 20" fill="none"><path d="M10 4v12M4 10h12" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+          </button>
+          <div class="faq-answer">
+            <div class="faq-answer-inner">Das ist riskant. Wenn Sie die gesetzte Frist verstreichen lassen ohne zu reagieren, kann die Kanzlei eine einstweilige Verfügung beantragen. Diese kann Ihnen vom Gericht auferlegen, die Bewertung zu löschen, und die Kosten des Verfahrens tragen Sie dann in der Regel selbst. Reagieren Sie immer innerhalb der gesetzten Frist – entweder mit einer modifizierten Unterlassungserklärung oder mit einem Zurückweisungsschreiben.</div>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question" onclick="toggleFaq(this)">
+            Was kostet mich das Vorgehen von abmahncheck.legal?
+            <svg class="faq-icon" viewBox="0 0 20 20" fill="none"><path d="M10 4v12M4 10h12" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+          </button>
+          <div class="faq-answer">
+            <div class="faq-answer-inner">Die Erstprüfung ist vollständig kostenlos. Wenn wir den Fall als klar missbräuchlich einschätzen und aktiv werden, zahlen Sie eine Pauschale von EUR 149. Damit übernehmen wir den gesamten weiteren Aufwand und das volle Kostenrisiko – inklusive eines möglichen Verfahrens. Keine versteckten Kosten, keine Überraschungen.</div>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question" onclick="toggleFaq(this)">
+            Wer steckt hinter abmahncheck.legal?
+            <svg class="faq-icon" viewBox="0 0 20 20" fill="none"><path d="M10 4v12M4 10h12" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+          </button>
+          <div class="faq-answer">
+            <div class="faq-answer-inner">abmahncheck.legal ist ein Angebot eines unabhängigen Prozessfinanzierers. Wir sind keine Anwaltskanzlei und bieten keine Rechtsberatung an. Wir prüfen Fälle auf eigenes Risiko und übernehmen Aufwand und Kosten wenn wir überzeugt sind, dass eine Abmahnung missbräuchlich ist. Für komplexe Fälle arbeiten wir mit spezialisierten deutschen Anwaltskanzleien zusammen.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── TRUST ── -->
+<section class="trust-section">
+  <div class="section-inner">
+    <h2 class="section-title" style="text-align: center;">Ihre Abmahnung. Unser Risiko.</h2>
+    <p class="section-sub" style="text-align: center;">Erstprüfung kostenlos, ehrlich und unverbindlich. Wenn Sie möchten dass wir weitermachen, übernehmen wir für EUR 149 alles – Aufwand, Kommunikation und volles Prozessrisiko inklusive.</p>
+    <a href="#pruefung" class="btn-primary" style="margin: 0 auto;">
+      Jetzt kostenlos prüfen lassen
+    </a>
+    <div class="trust-badges">
+      <div class="trust-badge">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M8 1L13.5 3.5V9C13.5 12.5 11 14.5 8 15.5C5 14.5 2.5 12.5 2.5 9V3.5L8 1Z" stroke="#22c55e" stroke-width="1.5"/><path d="M5.5 8l2 2 3-3" stroke="#22c55e" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        Unabhängiger Prozessfinanzierer
+      </div>
+      <div class="trust-badge">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="6.5" stroke="#22c55e" stroke-width="1.5"/><path d="M8 4.5V8l2.5 2" stroke="#22c55e" stroke-width="1.5" stroke-linecap="round"/></svg>
+        Antwort innert 24 Stunden
+      </div>
+      <div class="trust-badge">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><rect x="2" y="5" width="12" height="9" rx="2" stroke="#22c55e" stroke-width="1.5"/><path d="M5 5V4a3 3 0 016 0v1" stroke="#22c55e" stroke-width="1.5" stroke-linecap="round"/></svg>
+        SSL-verschlüsselt
+      </div>
+      <div class="trust-badge">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M8 1.5L14.5 8L8 14.5M1.5 8h13" stroke="#22c55e" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        Rundum-sorglos-Paket ab EUR 149
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── AGB MODAL ── -->
+<div id="agb-modal" style="display:none; position:fixed; inset:0; z-index:1000; background:rgba(15,26,18,0.6); overflow-y:auto; padding:40px 24px;">
+  <div style="max-width:720px; margin:0 auto; background:#fff; border-radius:20px; padding:48px; position:relative;">
+    <button onclick="document.getElementById('agb-modal').style.display='none'" style="position:absolute; top:20px; right:20px; background:none; border:none; cursor:pointer; font-size:24px; color:#6b7c70; line-height:1;">×</button>
+    <div style="font-family:'DM Sans',sans-serif; color:#0f1a12;">
+      <p style="font-size:11px; font-weight:500; letter-spacing:1.5px; text-transform:uppercase; color:#16a34a; margin-bottom:12px;">Rechtliches</p>
+      <h2 style="font-family:'Fraunces',serif; font-weight:300; font-size:32px; margin-bottom:32px; line-height:1.2;">Allgemeine Geschäftsbedingungen</h2>
+      <p style="font-size:12px; color:#6b7c70; margin-bottom:32px;">Stand: April 2026 · abmahncheck.legal</p>
+
+      <div style="display:flex; flex-direction:column; gap:28px; font-size:15px; line-height:1.75; color:#3d4f42;">
+
+        <div>
+          <h3 style="font-size:14px; font-weight:500; color:#0f1a12; margin-bottom:8px;">1. Anbieter und Leistungsbeschreibung</h3>
+          <p>abmahncheck.legal ist ein Angebot eines unabhängigen Prozessfinanzierers (nachfolgend "wir" oder "abmahncheck.legal"). Wir sind keine Rechtsanwaltskanzlei und erbringen keine Rechtsberatung im Sinne des deutschen Rechtsdienstleistungsgesetzes (RDG).</p>
+          <p style="margin-top:10px;">Unsere Leistung umfasst:</p>
+          <ul style="margin-top:8px; padding-left:20px; display:flex; flex-direction:column; gap:6px;">
+            <li>Eine kostenlose automatisierte Ersteinschätzung Ihres Falls auf Basis der von Ihnen eingereichten Unterlagen.</li>
+            <li>Bei vielversprechenden Fällen: die Erstellung und den Versand eines Schreibens in eigenem Namen als Prozessfinanzierer an die abmahnende Kanzlei sowie ein einmaliges Nachhaken falls keine Reaktion erfolgt.</li>
+            <li>Bei Bedarf: die Vermittlung an eine spezialisierte Anwaltskanzlei.</li>
+          </ul>
+        </div>
+
+        <div>
+          <h3 style="font-size:14px; font-weight:500; color:#0f1a12; margin-bottom:8px;">2. Was unsere Leistung nicht umfasst</h3>
+          <p>Die Leistung von abmahncheck.legal umfasst ausdrücklich nicht die rechtliche Vertretung des Kunden, die Führung von Gerichtsverfahren, die Übernahme von Prozesskosten oder Gerichtsgebühren sowie eine Garantie eines bestimmten Ergebnisses. Eine weitergehende Beteiligung an gerichtlichen Verfahren erfolgt ausschliesslich auf freiwilliger Basis und nach gesonderter schriftlicher Vereinbarung im Einzelfall.</p>
+        </div>
+
+        <div>
+          <h3 style="font-size:14px; font-weight:500; color:#0f1a12; margin-bottom:8px;">3. Vergütung</h3>
+          <p>Die Erstprüfung ist kostenlos und unverbindlich. Entscheiden Sie sich nach Erhalt unserer Einschätzung für das Rundum-sorglos-Paket, beträgt die einmalige Pauschale EUR 149 inkl. MwSt. Mit Zahlung dieser Pauschale ist die in Ziffer 1 beschriebene Leistung vollständig abgegolten. Weitere Kosten entstehen nicht, es sei denn Sie beauftragen gesonderte Leistungen.</p>
+        </div>
+
+        <div>
+          <h3 style="font-size:14px; font-weight:500; color:#0f1a12; margin-bottom:8px;">4. Abtretung des Gegenanspruchs</h3>
+          <p>Mit Zahlung der Pauschale treten Sie uns Ihren etwaigen Gegenanspruch wegen missbräuchlicher Abmahnung gegen die abmahnende Partei ab. Diese Abtretung dient uns als Grundlage dafür, in eigenem Namen tätig zu werden. Sie schulden uns keine weiteren Leistungen aus dieser Abtretung. Falls wir einen Betrag von der Gegenseite erhalten sollten, der über unsere internen Kosten hinausgeht, informieren wir Sie darüber.</p>
+        </div>
+
+        <div>
+          <h3 style="font-size:14px; font-weight:500; color:#0f1a12; margin-bottom:8px;">5. Haftungsbeschränkung</h3>
+          <p>Unsere Haftung ist auf die Höhe der von Ihnen bezahlten Pauschale begrenzt, also auf maximal EUR 149. Wir haften nicht für den Ausgang des Verfahrens, für Handlungen der abmahnenden Kanzlei nach Erhalt unseres Schreibens, oder für Schäden die durch eine Nichtreaktion der Gegenseite entstehen. Wir geben keine Erfolgsgarantie.</p>
+        </div>
+
+        <div>
+          <h3 style="font-size:14px; font-weight:500; color:#0f1a12; margin-bottom:8px;">6. Mitwirkungspflichten des Kunden</h3>
+          <p>Sie verpflichten sich, uns vollständige und wahrheitsgemässe Unterlagen zur Verfügung zu stellen. Sie informieren uns unverzüglich wenn die abmahnende Kanzlei direkt an Sie herantritt oder weitere rechtliche Schritte einleitet. Unvollständige oder irreführende Angaben können zur Aufhebung des Vertrags führen, ohne dass eine Rückerstattung geschuldet wird.</p>
+        </div>
+
+        <div>
+          <h3 style="font-size:14px; font-weight:500; color:#0f1a12; margin-bottom:8px;">7. Widerrufsrecht</h3>
+          <p>Als Verbraucher haben Sie das Recht, diesen Vertrag innerhalb von 14 Tagen ohne Angabe von Gründen zu widerrufen. Das Widerrufsrecht erlischt vorzeitig wenn wir mit Ihrer ausdrücklichen Zustimmung mit der Leistungserbringung begonnen haben. Mit Einreichung des Falls und Zahlung erteilen Sie diese ausdrückliche Zustimmung.</p>
+        </div>
+
+        <div>
+          <h3 style="font-size:14px; font-weight:500; color:#0f1a12; margin-bottom:8px;">8. Datenschutz</h3>
+          <p>Ihre Daten werden ausschliesslich zur Fallprüfung und zur Kommunikation mit Ihnen verwendet. Wir geben keine Daten ohne Ihre Einwilligung an Dritte weiter, ausser dies ist zur Leistungserbringung erforderlich (z.B. Weiterleitung an eine Anwaltskanzlei auf Ihren ausdrücklichen Wunsch). Die Datenverarbeitung erfolgt auf Basis Ihrer Einwilligung sowie unseres berechtigten Interesses. Serverstandort Schweiz.</p>
+        </div>
+
+        <div>
+          <h3 style="font-size:14px; font-weight:500; color:#0f1a12; margin-bottom:8px;">9. Anwendbares Recht und Gerichtsstand</h3>
+          <p>Es gilt Schweizer Recht. Gerichtsstand ist Zürich, Schweiz. Für Verbraucher aus der EU gelten ergänzend die zwingenden Verbraucherschutzvorschriften des jeweiligen Wohnsitzlandes.</p>
+        </div>
+
+        <div style="background:#f0fdf4; border:1px solid #dcfce7; border-radius:12px; padding:20px; margin-top:8px;">
+          <p style="font-size:13px; color:#16a34a; font-weight:500; margin-bottom:6px;">Ein ehrliches Wort</p>
+          <p style="font-size:13px; color:#3d4f42; line-height:1.7;">Wir haben diese AGB bewusst klar und fair formuliert. Unser Modell lebt von Fällen wo ein professionelles Schreiben ausreicht um eine missbräuchliche Abmahnung versanden zu lassen. Das gelingt in den meisten Fällen. Wo es nicht gelingt, helfen wir Ihnen eine spezialisierte Kanzlei zu finden. Wir sind kein Versicherungsprodukt und kein Rechtsanwalt – aber wir stehen hinter jedem Brief den wir schreiben.</p>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ── FOOTER ── -->
+<footer id="datenschutz">
+  <div class="footer-inner">
+    <span>© 2026 abmahncheck.legal</span>
+    <ul class="footer-links">
+      <li><a href="#" onclick="document.getElementById('agb-modal').style.display='block'; return false;">AGB</a></li>
+      <li><a href="#">Impressum</a></li>
+      <li><a href="#">Datenschutz</a></li>
+      <li><a href="#">Kontakt</a></li>
+    </ul>
+  </div>
+</footer>
+
+<script>
+function toggleFaq(btn) {
+  const item = btn.closest('.faq-item');
+  const answer = item.querySelector('.faq-answer');
+  const isOpen = item.classList.contains('open');
+  document.querySelectorAll('.faq-item.open').forEach(i => {
+    i.classList.remove('open');
+    i.querySelector('.faq-answer').style.maxHeight = '0';
+  });
+  if (!isOpen) {
+    item.classList.add('open');
+    answer.style.maxHeight = answer.scrollHeight + 'px';
+  }
+}
+
+function toggleMobileNav() {
+  const links = document.querySelector('.nav-links');
+  if (links.style.display === 'flex') {
+    links.style.display = 'none';
+  } else {
+    links.style.display = 'flex';
+    links.style.flexDirection = 'column';
+    links.style.position = 'absolute';
+    links.style.top = '64px';
+    links.style.left = '0';
+    links.style.right = '0';
+    links.style.background = 'var(--white)';
+    links.style.padding = '16px 24px';
+    links.style.borderBottom = '1px solid var(--border)';
+    links.style.gap = '16px';
+  }
+}
+
+const dropZone = document.querySelector('.upload-zone');
+if (dropZone) {
+  dropZone.addEventListener('dragover', e => { e.preventDefault(); dropZone.style.borderColor = 'var(--green)'; });
+  dropZone.addEventListener('dragleave', () => { dropZone.style.borderColor = ''; });
+  dropZone.addEventListener('drop', e => {
+    e.preventDefault();
+    dropZone.style.borderColor = '';
+    const file = e.dataTransfer.files[0];
+    if (file) dropZone.querySelector('p').textContent = file.name;
+  });
+  document.getElementById('fileInput').addEventListener('change', e => {
+    const file = e.target.files[0];
+    if (file) dropZone.querySelector('p').textContent = file.name;
+  });
+  document.getElementById('fileInput2').addEventListener('change', e => {
+    const file = e.target.files[0];
+    if (file) document.querySelectorAll('.upload-zone')[1].querySelector('p').textContent = file.name;
+  });
+}
+</script>
+</body>
+</html>
