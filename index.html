@@ -26,7 +26,7 @@
     --radius-lg: 20px;
   }
 
-  html { scroll-behavior: smooth; }
+  html { scroll-behavior: smooth; overflow-x: hidden; }
 
   body {
     font-family: 'DM Sans', sans-serif;
@@ -35,6 +35,7 @@
     font-size: 16px;
     line-height: 1.6;
     -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
   }
 
   /* ── LOGO COMPONENT (leicht austauschbar) ── */
@@ -142,6 +143,10 @@
     border-radius: 100px;
     margin-bottom: 20px;
     letter-spacing: 0.3px;
+    max-width: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
   .hero-badge-dot {
     width: 6px;
@@ -696,7 +701,7 @@
     }
     .hero-card { display: none; }
     .upload-grid { grid-template-columns: 1fr; gap: 40px; }
-    .result-cards { grid-template-columns: 1fr; }
+    .result-cards { grid-template-columns: 1fr !important; }
     .how-steps { grid-template-columns: 1fr; }
     .faq-grid { grid-template-columns: 1fr; gap: 40px; }
     .faq-sticky { position: static; }
@@ -743,7 +748,7 @@
     <div class="hero-left">
       <div class="hero-badge">
         <span class="hero-badge-dot"></span>
-        Kostenlose Erstprüfung · Google, Tripadvisor, Trustpilot & mehr
+        Kostenlose Erstprüfung · Google, Tripadvisor & mehr
       </div>
       <h1>Abgemahnt wegen einer <em>Online-Bewertung?</em></h1>
       <p class="hero-sub">Abgemahnt wegen einer Bewertung auf Google, Tripadvisor, Trustpilot oder einer anderen Plattform? Wir prüfen kostenlos ob die Abmahnung missbräuchlich ist und geben Ihnen eine klare Einschätzung. Wenn Sie möchten, übernehmen wir für EUR 149 den gesamten weiteren Aufwand und das volle Prozessrisiko.</p>
@@ -880,9 +885,9 @@
             <label class="form-label">Ihr Name <span>(optional)</span></label>
             <input type="text" placeholder="Vor- und Nachname">
           </div>
-          <label class="form-privacy">
-            <input type="checkbox">
-            Ich habe die <a href="#" onclick="document.getElementById('agb-modal').style.display='block'; return false;" style="color: var(--green-dark);">AGB</a> und die <a href="#datenschutz" style="color: var(--green-dark);">Datenschutzerklärung</a> gelesen, stimme der Verarbeitung meiner Daten zu und trete meinen etwaigen Gegenanspruch wegen missbräuchlicher Abmahnung an abmahncheck.legal ab.
+          <label class="form-privacy" style="display:flex; align-items:flex-start; gap:10px; cursor:pointer;">
+            <input type="checkbox" style="width:16px; height:16px; margin-top:3px; flex-shrink:0; accent-color:var(--green);">
+            <span>Ich habe die <a href="#" onclick="document.getElementById('agb-modal').style.display='block'; return false;" style="color: var(--green-dark);">AGB</a> und die <a href="#datenschutz" style="color: var(--green-dark);">Datenschutzerklärung</a> gelesen, stimme der Verarbeitung meiner Daten zu und trete meinen etwaigen Gegenanspruch wegen missbräuchlicher Abmahnung an abmahncheck.legal ab.</span>
           </label>
           <button class="btn-primary" style="width: 100%; justify-content: center;">
             Fall kostenlos einreichen
