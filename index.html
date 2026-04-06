@@ -244,7 +244,7 @@
     box-shadow: 0 4px 24px rgba(15, 26, 18, 0.06);
     animation: cardFloat 4s ease-in-out infinite;
   }
-  @keyframes cardFloat {
+  @keyframes spin { to { transform: rotate(360deg); } }
     0%, 100% { transform: translateY(0); }
     50% { transform: translateY(-6px); }
   }
@@ -696,16 +696,19 @@
     .nav-mobile-toggle { display: block; }
     .hero {
       grid-template-columns: 1fr;
-      padding: 48px 24px 40px;
+      padding: 32px 20px 32px;
       gap: 40px;
     }
+    .hero-sub { font-size: 15px; }
+    .hero h1 { font-size: 32px; }
     .hero-card { display: none; }
     .upload-grid { grid-template-columns: 1fr; gap: 40px; }
     .result-cards { grid-template-columns: 1fr !important; }
     .how-steps { grid-template-columns: 1fr; }
     .faq-grid { grid-template-columns: 1fr; gap: 40px; }
     .faq-sticky { position: static; }
-    section { padding: 56px 24px; }
+    section { padding: 56px 20px; }
+    .trust-row { gap: 12px; }
   }
 </style>
 </head>
@@ -847,7 +850,7 @@
         <div class="upload-form">
           <div class="form-group">
             <label class="form-label">Ihre Bewertung <span>(der Text den Sie geschrieben haben)</span></label>
-            <textarea rows="4" placeholder="Kopieren Sie hier den genauen Wortlaut Ihrer Bewertung..."></textarea>
+            <textarea id="input-bewertung" rows="4" placeholder="Kopieren Sie hier den genauen Wortlaut Ihrer Bewertung..."></textarea>
           </div>
           <div class="form-group">
             <label class="form-label">Abmahnschreiben <span>(PDF oder Foto)</span></label>
@@ -879,17 +882,21 @@
           </div>
           <div class="form-group">
             <label class="form-label">Ihre E-Mail-Adresse</label>
-            <input type="email" placeholder="name@beispiel.de">
+            <input id="input-email" type="email" placeholder="name@beispiel.de">
           </div>
           <div class="form-group">
             <label class="form-label">Ihr Name <span>(optional)</span></label>
-            <input type="text" placeholder="Vor- und Nachname">
+            <input id="input-name" type="text" placeholder="Vor- und Nachname">
           </div>
           <label class="form-privacy" style="display:flex; align-items:flex-start; gap:10px; cursor:pointer;">
-            <input type="checkbox" style="width:16px; height:16px; margin-top:3px; flex-shrink:0; accent-color:var(--green);">
+            <input id="input-agb" type="checkbox" style="width:16px; height:16px; margin-top:3px; flex-shrink:0; accent-color:var(--green);">
             <span>Ich habe die <a href="#" onclick="document.getElementById('agb-modal').style.display='block'; return false;" style="color: var(--green-dark);">AGB</a> und die <a href="#datenschutz" style="color: var(--green-dark);">Datenschutzerklärung</a> gelesen, stimme der Verarbeitung meiner Daten zu und trete meinen etwaigen Gegenanspruch wegen missbräuchlicher Abmahnung an abmahncheck.legal ab.</span>
           </label>
-          <button class="btn-primary" style="width: 100%; justify-content: center;">
+
+          <!-- Ergebnis-Box (wird nach Submit angezeigt) -->
+          <div id="ergebnis-box" style="display:none; border-radius:12px; padding:20px; margin-top:4px;"></div>
+
+          <button id="submit-btn" class="btn-primary" style="width: 100%; justify-content: center;" onclick="submitFall(event)">
             Fall kostenlos einreichen
             <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
               <path d="M3 8h10M9 4l4 4-4 4" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
@@ -1168,7 +1175,73 @@
 </footer>
 
 <script>
-function toggleFaq(btn) {
+async function submitFall(e) {
+  e.preventDefault();
+
+  const bewertung = document.getElementById('input-bewertung').value.trim();
+  const email = document.getElementById('input-email').value.trim();
+  const name = document.getElementById('input-name').value.trim();
+  const agb = document.getElementById('input-agb').checked;
+  const btn = document.getElementById('submit-btn');
+  const box = document.getElementById('ergebnis-box');
+
+  if (!bewertung) { alert('Bitte geben Sie den Text Ihrer Bewertung ein.'); return; }
+  if (!email) { alert('Bitte geben Sie Ihre E-Mail-Adresse ein.'); return; }
+  if (!agb) { alert('Bitte stimmen Sie den AGB zu.'); return; }
+
+  btn.disabled = true;
+  btn.innerHTML = '<svg width="16" height="16" viewBox="0 0 16 16" fill="none" style="animation:spin 1s linear infinite"><path d="M8 2a6 6 0 110 12A6 6 0 018 2z" stroke="white" stroke-width="1.5" stroke-dasharray="20" stroke-dashoffset="10"/></svg> Wird geprüft...';
+
+  box.style.display = 'none';
+
+  try {
+    const res = await fetch('/api/check', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ bewertung, email, name })
+    });
+    const data = await res.json();
+
+    if (data.ergebnis === 'positiv') {
+      box.style.background = '#f0fdf4';
+      box.style.border = '1px solid #dcfce7';
+      box.innerHTML = `
+        <div style="display:flex;gap:12px;align-items:flex-start;">
+          <div style="width:32px;height:32px;background:#22c55e;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3.5 8l3 3 6-6" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <div>
+            <p style="font-weight:500;color:#0f1a12;margin-bottom:4px;">Ihre Unterlagen sehen vielversprechend aus.</p>
+            <p style="font-size:14px;color:#3d4f42;">${data.nachricht}</p>
+          </div>
+        </div>`;
+    } else {
+      box.style.background = '#f8fafc';
+      box.style.border = '1px solid #e2e8f0';
+      box.innerHTML = `
+        <div style="display:flex;gap:12px;align-items:flex-start;">
+          <div style="width:32px;height:32px;background:#94a3b8;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M8 5v4M8 11v.5" stroke="white" stroke-width="2" stroke-linecap="round"/></svg>
+          </div>
+          <div>
+            <p style="font-weight:500;color:#0f1a12;margin-bottom:4px;">Leider können wir in diesem Fall nicht direkt helfen.</p>
+            <p style="font-size:14px;color:#3d4f42;">${data.nachricht}</p>
+          </div>
+        </div>`;
+    }
+    box.style.display = 'block';
+    btn.style.display = 'none';
+  } catch (err) {
+    box.style.background = '#fef2f2';
+    box.style.border = '1px solid #fecaca';
+    box.innerHTML = '<p style="color:#dc2626;">Ein Fehler ist aufgetreten. Bitte versuchen Sie es später erneut oder schreiben Sie uns direkt an info@abmahncheck.legal.</p>';
+    box.style.display = 'block';
+    btn.disabled = false;
+    btn.innerHTML = 'Fall kostenlos einreichen <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+  }
+}
+
+
   const item = btn.closest('.faq-item');
   const answer = item.querySelector('.faq-answer');
   const isOpen = item.classList.contains('open');
