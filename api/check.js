@@ -26,21 +26,32 @@ export default async function handler(req, res) {
         max_tokens: 1000,
         messages: [{
           role: 'user',
-          content: `Du bist ein Experte für deutsches Abmahnrecht, spezialisiert auf Abmahnungen wegen Online-Bewertungen.
+          content: `Du bist ein sehr strenger Experte für deutsches Abmahnrecht, spezialisiert auf Abmahnungen wegen Online-Bewertungen.
 
-Analysiere folgenden Fall und klassifiziere ihn als A, B oder C:
+Analysiere folgenden Bewertungstext und klassifiziere ihn als A, B oder C.
 
-A = Klar missbräuchlich: Die Abmahnung hat hohe Wahrscheinlichkeit missbräuchlich zu sein. Typische Merkmale: Die beanstandete Aussage ist eine zulässige Meinungsäusserung, die Forderungen sind unverhältnismässig, oder es handelt sich um eine bekannte Abmahnkanzlei die systematisch vorgeht.
+Vergib A NUR wenn ALLE folgenden Bedingungen erfüllt sind:
+1. Der Text ist eindeutig eine subjektive Meinungsäusserung ("war schlecht", "unfreundlich", "enttäuschend", "nicht empfehlenswert", "schlechter Service" etc.)
+2. Es sind KEINE konkreten überprüfbaren Tatsachenbehauptungen enthalten
+3. Eine Abmahnung dagegen wäre offensichtlich rechtsmissbräuchlich
 
-B = Unklar: Der Fall hat Potential aber braucht vertiefte juristische Prüfung. Grenzfälle zwischen Meinungsäusserung und Tatsachenbehauptung, oder unklare Sachlage.
+Vergib B wenn:
+- Der Text sowohl Meinungen als auch konkrete Aussagen enthält
+- Die Einordnung als Meinung vs. Tatsache unklar ist
 
-C = Nicht geeignet: Die Abmahnung ist wahrscheinlich berechtigt, oder der Fall liegt ausserhalb des Bereichs Bewertungsabmahnungen.
+Vergib C wenn:
+- Der Text konkrete Vorwürfe enthält (Betrug, Diebstahl, Hygieneverstösse, strafrechtliches etc.)
+- Der Text übertrieben oder beleidigend ist
+- Es unklar ist ob es eine echte Bewertungssituation ist
+- Im Zweifel immer C
 
-BEWERTUNGSTEXT DES KUNDEN:
+Standard ist C. A ist die Ausnahme, nicht die Regel.
+
+BEWERTUNGSTEXT:
 ${bewertung}
 
 Antworte NUR in folgendem JSON-Format ohne weitere Erklärung:
-{"klassifikation": "A", "begruendung": "Kurze Begründung in 1-2 Sätzen auf Deutsch"}`
+{"klassifikation": "C", "begruendung": "Kurze Begründung in 1-2 Sätzen auf Deutsch"}`
         }]
       })
     });
