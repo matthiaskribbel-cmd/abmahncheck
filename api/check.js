@@ -77,7 +77,7 @@ Antworte NUR in folgendem JSON-Format ohne weitere Erklärung:
         'Authorization': `Bearer ${process.env.RESEND_API_KEY}`
       },
       body: JSON.stringify({
-        from: 'abmahncheck.legal <onboarding@resend.dev>',
+        from: 'abmahncheck.legal <info@abmahncheck.legal>',
         to: ['info@abmahncheck.legal'],
         subject: `[${klassifikation}] Neuer Fall von ${name || email}`,
         html: `
